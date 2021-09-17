@@ -85,7 +85,7 @@ public class Board {
     }
 
     public void nextTick() {
-        List<Coordinate> temp = new ArrayList<>();
+        LifeCells temp = new LifeCells();
 
         for (Coordinate coord : this.lifeCells.container) {
             int lifeNeighbors = this.countLifeNeighbors(coord);
@@ -93,7 +93,9 @@ public class Board {
                 // System.out.print("debug: ");
                 // coord.print();
                 // System.out.println("");
-                temp.add(coord);
+                if (!temp.contains(coord)) {
+                    temp.container.add(coord);
+                }
             }
         }
 
@@ -106,13 +108,13 @@ public class Board {
                 int lifeNeighbors = this.countLifeNeighbors(cur);
                 if ((lifeNeighbors == 3)) {
                     if (!temp.contains(cur)) {
-                        temp.add(cur);
+                        temp.container.add(cur);
                     }
                 }
             }
         }
 
-        this.lifeCells = new LifeCells(temp);
+        this.lifeCells = (temp);
     }
 
     public int getMaxX() {
@@ -145,7 +147,6 @@ public class Board {
     }
     
     public void show() {
-        //todo
         int maxX = this.getMaxX();
         int maxY = this.getMaxY();
         int minX = this.getMinX();
