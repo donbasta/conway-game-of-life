@@ -1,0 +1,23 @@
+public class LifeCells {
+    public List<Coordinate> container;
+    public LifeCells() {
+        this.container = new ArrayList<>();
+    }
+    public LifeCells(List<Coordinate> _lifeCells) {
+        this.container = _lifeCells;
+    }
+    public boolean contains(Coordinate c) {
+        for (Coordinate coor : this.container) {
+            if (coor.equals(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public void print() {
+        for (Coordinate c : this.container) {
+            c.print();
+        }
+        System.out.println("");
+    }
+}
