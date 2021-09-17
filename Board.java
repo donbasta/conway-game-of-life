@@ -19,6 +19,9 @@ class Coordinate {
     public boolean equals(Coordinate c) {
         return (this.a == c.a) && (this.b == c.b);
     }
+    public void print() {
+        System.out.printf("(%d, %d),", this.a, this.b);
+    }
 }
 
 class LifeCells {
@@ -36,6 +39,12 @@ class LifeCells {
             }
         }
         return false;
+    }
+    public void print() {
+        for (Coordinate c : this.container) {
+            c.print();
+        }
+        System.out.println("");
     }
 }
 
@@ -81,6 +90,9 @@ public class Board {
         for (Coordinate coord : this.lifeCells.container) {
             int lifeNeighbors = this.countLifeNeighbors(coord);
             if ((lifeNeighbors == 2) || (lifeNeighbors == 3)) {
+                // System.out.print("debug: ");
+                // coord.print();
+                // System.out.println("");
                 temp.add(coord);
             }
         }
@@ -92,9 +104,9 @@ public class Board {
                     continue;
                 }
                 int lifeNeighbors = this.countLifeNeighbors(cur);
-                if ((lifeNeighbors == 2) || (lifeNeighbors == 3)) {
-                    if (!temp.contains(coord)) {
-                        temp.add(coord);
+                if ((lifeNeighbors == 3)) {
+                    if (!temp.contains(cur)) {
+                        temp.add(cur);
                     }
                 }
             }
