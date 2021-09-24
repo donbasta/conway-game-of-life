@@ -41,28 +41,23 @@ public class Board {
 
     public void nextTick() {
         CellContainer temp = new CellContainer();
-
         for (Cell cell : this.lifeCells) {
             if (liveOnTheNextTick(cell.getX(), cell.getY())) {
                 temp.add(cell);
             }
         }
-
         for (Cell cell : this.lifeCells) {
             for (int r : DIF_ROW) {
                 for (int c : DIF_COL) {
                     if (r == 0 && c == 0) {
                         continue;
                     }
-                    int newRow = cell.getX() + r;
-                    int newCol = cell.getY() + c;
-                    if (liveOnTheNextTick(newRow, newCol)) {
+                    if (liveOnTheNextTick(cell.getX() + r, cell.getY() + c)) {
                         temp.add(cell);
                     }
                 }
             }
         }
-
         this.lifeCells = temp;
     }
 }
