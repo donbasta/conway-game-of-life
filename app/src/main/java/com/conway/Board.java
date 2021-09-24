@@ -2,9 +2,11 @@ package com.conway;
 
 public class Board {
     private final boolean[][] grid;
+    private CellContainer lifeCells;
 
     public Board(int row, int col) {
         grid = new boolean[row][col];
+        lifeCells = new CellContainer();
     }
 
     public boolean isOutOfBound(int row, int col) {
@@ -34,5 +36,12 @@ public class Board {
             return (countLifeNeighbor == 2) || (countLifeNeighbor == 3);
         }
         return (countLifeNeighbor == 3);
+    }
+
+    public CellContainer getLifeCells() {
+        return this.lifeCells;
+    }
+
+    public void nextTick() {
     }
 }
