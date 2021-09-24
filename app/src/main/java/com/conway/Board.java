@@ -3,6 +3,8 @@ package com.conway;
 public class Board {
     private final boolean[][] grid;
     private CellContainer lifeCells;
+    private static final int[] DIF_ROW = {-1, 0, 1};
+    private static final int[] DIF_COL = {-1, 0, 1};
 
     public Board(int row, int col) {
         grid = new boolean[row][col];
@@ -14,11 +16,9 @@ public class Board {
     }
 
     public boolean liveOnTheNextTick(int row, int col) {
-        int[] difRow = {-1, 0, 1};
-        int[] difCol = {-1, 0, 1};
         int countLifeNeighbor = 0;
-        for (int r : difRow) {
-            for (int c : difCol) {
+        for (int r : DIF_ROW) {
+            for (int c : DIF_COL) {
                 if (r == 0 && c == 0) {
                     continue;
                 }
@@ -52,10 +52,8 @@ public class Board {
         }
 
         for (Cell cell : this.lifeCells) {
-            int[] difRow = {-1, 0, 1};
-            int[] difCol = {-1, 0, 1};
-            for (int r : difRow) {
-                for (int c : difCol) {
+            for (int r : DIF_ROW) {
+                for (int c : DIF_COL) {
                     if (r == 0 && c == 0) {
                         continue;
                     }
