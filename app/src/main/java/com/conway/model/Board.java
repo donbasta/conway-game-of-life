@@ -11,6 +11,10 @@ public class Board {
         lifeCells = new CellContainer();
     }
 
+    public void setLifeCells(CellContainer cellContainer) {
+        lifeCells = cellContainer;
+    }
+
     public boolean isOutOfBound(int row, int col) {
         return row < 0 || col < 0 || row >= grid.length || col >= grid[0].length;
     }
@@ -30,7 +34,7 @@ public class Board {
             }
         }
         if (lifeCells.contains(new Cell(row, col))) {
-            return (countLifeNeighbor == 2) || (countLifeNeighbor == 3);
+            return ((countLifeNeighbor == 2) || (countLifeNeighbor == 3));
         }
         return (countLifeNeighbor == 3);
     }
@@ -52,12 +56,29 @@ public class Board {
                     if (r == 0 && c == 0) {
                         continue;
                     }
+                    if (lifeCells.contains(new Cell(cell.getX() + r, cell.getY() + c))) {
+                        continue;
+                    }
                     if (liveOnTheNextTick(cell.getX() + r, cell.getY() + c)) {
-                        temp.add(cell);
+                        temp.add(new Cell(cell.getX() + r, cell.getY() + c));
                     }
                 }
             }
         }
         this.lifeCells = temp;
+    }
+
+    public void show() {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[0].length; j++) {
+                if (lifeCells.contains(new Cell(i, j))) {
+                    System.out.print("😄");
+                } else {
+                    System.out.print("()");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("-----------");
     }
 }
