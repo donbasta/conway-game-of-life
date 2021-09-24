@@ -12,4 +12,11 @@ public class CellContainer {
     public boolean contains(Cell cell) {
         return this.cells.contains(cell);
     }
+
+    public void add(Cell cell) {
+    }
+
+    public int getSize() {
+        return this.cells.size();
+    }
 }
