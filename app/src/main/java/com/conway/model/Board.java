@@ -56,9 +56,6 @@ public class Board {
                     if (r == 0 && c == 0) {
                         continue;
                     }
-                    if (lifeCells.contains(new Cell(cell.getX() + r, cell.getY() + c))) {
-                        continue;
-                    }
                     if (liveOnTheNextTick(cell.getX() + r, cell.getY() + c)) {
                         temp.add(new Cell(cell.getX() + r, cell.getY() + c));
                     }
