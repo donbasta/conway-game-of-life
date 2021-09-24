@@ -1,13 +1,14 @@
 package com.conway.model;
 
 public class Board {
-    private final boolean[][] grid;
+    private final int row, col;
     private CellContainer lifeCells;
     private static final int[] DIF_ROW = {-1, 0, 1};
     private static final int[] DIF_COL = {-1, 0, 1};
 
     public Board(int row, int col) {
-        grid = new boolean[row][col];
+        this.row = row;
+        this.col = col;
         lifeCells = new CellContainer();
     }
 
@@ -16,7 +17,7 @@ public class Board {
     }
 
     public boolean isOutOfBound(int row, int col) {
-        return row < 0 || col < 0 || row >= grid.length || col >= grid[0].length;
+        return row < 0 || col < 0 || row >= this.row || col >= this.col;
     }
 
     public boolean liveOnTheNextTick(int row, int col) {
@@ -66,8 +67,8 @@ public class Board {
     }
 
     public void show() {
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[0].length; j++) {
+        for (int i = 0; i < this.row; i++) {
+            for (int j = 0; j < this.col; j++) {
                 if (lifeCells.contains(new Cell(i, j))) {
                     System.out.print("😄");
                 } else {
