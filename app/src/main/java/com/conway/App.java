@@ -18,7 +18,6 @@ public class App {
                     new Cell(3, 3),
                     new Cell(3, 4)
             )));
-            lifeCells.print();
 
             Board board = new Board(5, 5);
             board.setLifeCells(lifeCells);
