@@ -24,9 +24,6 @@ public class Board {
                 }
                 int newRow = row + r;
                 int newCol = col + c;
-                if (isOutOfBound(newRow, newCol)) {
-                    continue;
-                }
                 if (lifeCells.contains(new Cell(newRow, newCol))) {
                     countLifeNeighbor++;
                 }
