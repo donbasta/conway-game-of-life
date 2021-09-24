@@ -14,6 +14,9 @@ public class CellContainer {
     }
 
     public void add(Cell cell) {
+        if (!this.contains(cell)) {
+            this.cells.add(cell);
+        }
     }
 
     public int getSize() {
