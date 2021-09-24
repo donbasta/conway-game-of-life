@@ -1,4 +1,4 @@
-package com.conway;
+package com.conway.model;
 
 public class Board {
     private final boolean[][] grid;

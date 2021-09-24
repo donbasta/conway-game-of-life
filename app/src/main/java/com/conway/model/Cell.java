@@ -1,4 +1,4 @@
-package com.conway;
+package com.conway.model;
 
 import java.util.Objects;
 
