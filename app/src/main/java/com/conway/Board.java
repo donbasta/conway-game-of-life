@@ -27,12 +27,12 @@ public class Board {
                 if (isOutOfBound(newRow, newCol)) {
                     continue;
                 }
-                if (grid[newRow][newCol]) {
+                if (lifeCells.contains(new Cell(newRow, newCol))) {
                     countLifeNeighbor++;
                 }
             }
         }
-        if (grid[row][col]) {
+        if (lifeCells.contains(new Cell(row, col))) {
             return (countLifeNeighbor == 2) || (countLifeNeighbor == 3);
         }
         return (countLifeNeighbor == 3);
@@ -43,5 +43,31 @@ public class Board {
     }
 
     public void nextTick() {
+        CellContainer temp = new CellContainer();
+
+        for (Cell cell : this.lifeCells) {
+            if (liveOnTheNextTick(cell.getX(), cell.getY())) {
+                temp.add(cell);
+            }
+        }
+
+        for (Cell cell : this.lifeCells) {
+            int[] difRow = {-1, 0, 1};
+            int[] difCol = {-1, 0, 1};
+            for (int r : difRow) {
+                for (int c : difCol) {
+                    if (r == 0 && c == 0) {
+                        continue;
+                    }
+                    int newRow = cell.getX() + r;
+                    int newCol = cell.getY() + c;
+                    if (liveOnTheNextTick(newRow, newCol)) {
+                        temp.add(cell);
+                    }
+                }
+            }
+        }
+
+        this.lifeCells = temp;
     }
 }

@@ -1,9 +1,10 @@
 package com.conway;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class CellContainer {
+public class CellContainer implements Iterable<Cell> {
     private List<Cell> cells;
 
     public CellContainer() {
@@ -26,5 +27,10 @@ public class CellContainer {
 
     public int getSize() {
         return this.cells.size();
+    }
+
+    @Override
+    public Iterator<Cell> iterator() {
+        return this.cells.iterator();
     }
 }
